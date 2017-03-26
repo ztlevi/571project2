@@ -10,4 +10,4 @@ Goal: We are trying to make a web application about showing local real time weat
 
 ## Sever Side:
 1. Create a database in phpMyAdmin called user_weather.
-2. Import the sql file in "./Server/sql/user_weather.sql".
+2. Uder user_weather, import the sql file in "./Server/sql/user_weather.sql".
