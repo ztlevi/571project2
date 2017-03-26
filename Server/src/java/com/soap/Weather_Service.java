@@ -25,14 +25,12 @@ import com.mysql.MySql;
  *
  * @author zhout
  */
-@WebService(serviceName = "SOAP_Service")
-public class SOAP_Service {
+@WebService(serviceName = "Weather_Service")
+public class Weather_Service {
 
     private JSONObject location;
     private JSONObject weather;
-    private String username;
-    private Connection con;
-    private Statement st;
+
     /**
      * This is a sample web service operation
      */
@@ -44,45 +42,6 @@ public class SOAP_Service {
         this.weather = data.getJSONObject("current");
     }
 
-    @WebMethod
-    public boolean validUser(@WebParam(name = "username") String username,
-                             @WebParam(name="password") String password) {
-        this.username = username;
-        String password2="";
-        try{
-            MySql sql = new MySql();
-            this.con = sql.createConnection();
-            this.st = con.createStatement();
-            String query = "select password from user where username='" + username + "'";
-            ResultSet rs=st.executeQuery(query);
-
-            rs.next();
-            password2 = rs.getString(1);
-
-        }catch(Exception e) { System.out.println(e);}
-
-        if (password.equals(password2)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    @WebMethod
-    public String getUser_saved_places() {
-        String lastSavedPlacs = "";
-        try{
-            String query = "select saved_place from user_saved_places where username='" + this.username + "'";
-            ResultSet rs = this.st.executeQuery(query);
-            rs.next();
-            
-            lastSavedPlacs = rs.getString(1);
-            this.con.close();
-        }catch(Exception e) { System.out.println(e);}
-
-        return lastSavedPlacs;
-    }
-    
     @WebMethod(operationName = "getCountry")
     public String getCountry() {
         String country = location.getString("country");
