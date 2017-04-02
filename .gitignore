@@ -1,6 +1,6 @@
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+SOAP_Web/Server/nbproject/private/
+SOAP_Web/Server/build/
+SOAP_Web/Server/nbbuild/
+SOAP_Web/Server/dist/
+SOAP_Web/Server/nbdist/
+SOAP_Web/Server/.nb-gradle/
