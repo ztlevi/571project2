@@ -19,3 +19,5 @@ Query the user's password ->
 2. Database: table usersavedplaces 
 Query the user's last check place->
 `http://localhost:8080/webresources/com.weather.db.usersavedplaces/?username={name}`
+3. Retrieve weateher data.
+`http://localhost:8080/webresources/weather/{location}`
