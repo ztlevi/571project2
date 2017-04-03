@@ -4,3 +4,9 @@ SOAP_Web/Server/nbbuild/
 SOAP_Web/Server/dist/
 SOAP_Web/Server/nbdist/
 SOAP_Web/Server/.nb-gradle/
+REST_Web/Server/nbproject/private/
+REST_Web/Server/build/
+REST_Web/Server/nbbuild/
+REST_Web/Server/dist/
+REST_Web/Server/nbdist/
+REST_Web/Server/.nb-gradle/
