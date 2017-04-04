@@ -11,3 +11,13 @@ Goal: We are trying to make a web application about showing local real time weat
 ## Sever Side:
 1. Create a database in phpMyAdmin called user_weather.
 2. Uder user_weather, import the sql file in "./Server/sql/user_weather.sql".
+
+##  REST Server Usage
+1. Database: table user 
+Query the user's password ->
+`http://localhost:8080/webresources/com.weather.db.user/?username={name}`
+2. Database: table usersavedplaces 
+Query the user's last check place->
+`http://localhost:8080/webresources/com.weather.db.usersavedplaces/?username={name}`
+3. Retrieve weateher data.
+`http://localhost:8080/webresources/weather/{location}`

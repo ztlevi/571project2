@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CIS 571 Project2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">
+            
+        <script type="text/javascript" >
+        $(document).ready(function (){
+            $.ajax({
+                 type: "POST",
+                 url: "../Web Services/Weather_Services", 
+                 dataType: "json", 
+                 data: "{}", 
+                 processData: false,
+                 contentType: "text/xml; charset=\"utf-8\"",
+                 success: OnSuccess, 
+                 error: OnError
+        });
+        
+        /*function CallServer(){
+            $.ajax({
+                 type: "POST",
+                 url: "../Web Services/Weather_Services", 
+                 dataType: "json", 
+                 data: "{}", 
+                 processData: false,
+                 contentType: "text/xml; charset=\"utf-8\"",
+                 success: OnSuccess, 
+                 error: OnError
+            });
+            }*/
+        
+        function OnSuccess(){
+            $("#divResponse").show("slow");
+            $("#divResponse").text(response.d);
+        }
+        
+        function OnError(){
+            $("#divResponse").show("slow");
+            $("#divResponse").text("Error");
+        }
+        
+        
+        </script>
+    </head>
+    <body>
+        <div>
+             <h1>This is a weather check web application, please input your location</h1>
+            <div>
+                Your location:<br/>
+                <input type="text" name="location" > 
+                <br/><br/><br/>
+                
+                <input type="submit" value="Submit" onclick="CallService">
+            </div>
+             <div id="divResponse"> 
+             
+             </div>
+            
+        </div>
+        
+        
+        
+    </body>
+</html>
