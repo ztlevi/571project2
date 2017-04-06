@@ -32,10 +32,6 @@ public class Weather_Service {
      * This is a sample web service operation
      */
     @WebMethod(operationName = "setLocation")
-<<<<<<< HEAD
-    
-=======
->>>>>>> e88b3b352d84300d242ce31e83634285812142db
     public String retrieveData(@WebParam(name = "location") String location) {
         RetrieveWeatherData ob = new RetrieveWeatherData();
         JSONObject data = ob.retrieveData(location);
