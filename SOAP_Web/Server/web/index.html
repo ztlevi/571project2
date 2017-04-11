@@ -17,15 +17,15 @@ and open the template in the editor.
               $(btnGetWeather).click(function(){
                   
                   var resultElement= $('#resultDiv');
-                  var requestData=$('#txtCity').val()+','+$('#txtCountry').val();
+                  var requestData=$('#txtCity').val();
                   var webserUrl = "http://localhost:8080/Server/Weather_Service?WSDL";
                   
                   var soapRequest = '<?xml version="1.0" encoding="UTF-8"?>\
                                      <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">\
                                      <SOAP-ENV:Header/>\
                                      <S:Body>\
-                                     <ns2:setLocation xmlns:ns2="http://soap.com/"\
-                                     <location>chicago</location>\
+                                     <ns2:setLocation xmlns:ns2="http://soap.com/">\
+                                     <location>'+requestData+'</location>\
                                      </ns2:setLocation>\
                                      </S:Body>\
                                      </S:Envelope>';
@@ -66,15 +66,15 @@ and open the template in the editor.
                 <td>City</td>
                 <td><input type="text" id="txtCity" /></td>
             </tr>
-             <tr>
+<!--             <tr>
                 <td>Country</td>
                 <td><input type="text" id="txtCountry" /></td>
-            </tr>
+            </tr>-->
         </table>
         <input type="button" id="btnGetWeather" value="Get Weather Data" />
         <br/> <br/>
         <div id="resultDiv">
-            sdffdsdgsdf
+  
         </div>
         
     </body>
