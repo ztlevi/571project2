@@ -5,13 +5,14 @@ $(document).ready(function () {
     // load google charts packages
     google.charts.load('current', {'packages':['gauge']});
 
-    $(btnGetWeather).click(function(){
-        
-        var resultElement= $('#resultDiv');
-        var requestData=$('#txtCity').val();
-        var webserUrl = "http://localhost:8080/Server/Weather_Service?WSDL";
-        
-        var soapRequest = '<?xml version="1.0" encoding="UTF-8"?>\
+    $(btnGetWeather).click(retrieveData); 
+});
+
+function retrieveData(){
+    var requestData=$('#txtCity').val();
+    var webserUrl = "http://localhost:8080/Server/Weather_Service?WSDL";
+    
+    var soapRequest = '<?xml version="1.0" encoding="UTF-8"?>\
                                      <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">\
                                      <SOAP-ENV:Header/>\
                                      <S:Body>\
@@ -20,37 +21,42 @@ $(document).ready(function () {
                                      </ns2:setLocation>\
                                      </S:Body>\
                                      </S:Envelope>';
-        $.ajax({
-            type: "POST",
-            url:webserUrl,
-            contentType: "text/xml",
-            dataType: "xml",
-            data: soapRequest,
-            success: function(data, status, req){
-                console.log(data);
-                var txt =data.getElementsByTagName("return")[0].firstChild.nodeValue;
-                obj=JSON.parse(txt);
-                resultElement.html(
-                    'temp_f: '+obj.current.temp_f+'<br/>'+
-                        'Last_updated: '+obj.current.last_updated+'<br/>'+
-                        'Temprature_feels_like: '+obj.current.feelslike_c+'<br/>'+
-                        'wind_degree: '+obj.current.wind_degree+'<br/>'+
-                        'wind_dir: '+obj.current.wind_dir+'<br/>'+
-                        'wind_kph: '+obj.current.wind_kph+'<br/>'
-                    
-                );
+    $.ajax({
+        type: "POST",
+        url:webserUrl,
+        contentType: "text/xml",
+        dataType: "xml",
+        data: soapRequest,
+        success: function(data, status, req){
+            console.log(data);
+            var txt =data.getElementsByTagName("return")[0].firstChild.nodeValue;
+            obj=JSON.parse(txt);
+            // display the result if success
+            display();
+        },
+        error: function(data, status, req){
+            alert(req.responseText + " " + status);
+        }
+    });
+}
 
-                if (obj != null) {
-                    google.charts.setOnLoadCallback(drawFahrenheitTemp);
-                    google.charts.setOnLoadCallback(drawCelsiusTemp);
-                }
-            },
-            error: function(data, status, req){
-                alert(req.responseText + " " + status);
-            }
-        });
-    }); 
-});
+function display() {
+    var resultElement= $('#resultDiv');
+    resultElement.html(
+        'temp_f: '+obj.current.temp_f+'<br/>'+
+            'Last_updated: '+obj.current.last_updated+'<br/>'+
+            'Temprature_feels_like: '+obj.current.feelslike_c+'<br/>'+
+            'wind_degree: '+obj.current.wind_degree+'<br/>'+
+            'wind_dir: '+obj.current.wind_dir+'<br/>'+
+            'wind_kph: '+obj.current.wind_kph+'<br/>'
+        
+    );
+
+    if (obj != null) {
+        google.charts.setOnLoadCallback(drawFahrenheitTemp);
+        google.charts.setOnLoadCallback(drawCelsiusTemp);
+    }
+}
 
 function drawCelsiusTemp() {
 
