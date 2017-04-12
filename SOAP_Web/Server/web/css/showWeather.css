@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 11, 2017, 10:04:26 PM
+    Author     : jirigesifnu
+*/
+body {
+  background-image:url("http://wallpapercave.com/wp/kSQdCxM.jpg");
+  background-repeat:no-repeat;
+  background-size:100%;
+  /*background-color:#FFFFFF;*/
+}
+.title {
+  font-family: Arial Rounded MT Bold;
+  margin: 200px auto 0px auto;
+ /* background-color:#FFFFFF;*/
+}
+
+h1 {
+  color: #FFFFFF;
+  font-size:42px;
+  margin: 5px auto 20px auto;
+}
+.appBox {
+  width: 500px;
+  height: auto;
+  background-color:none;
+  color:#FFFFFF;
+  border: solid #FFFFFF;
+  border-radius: 10px;
+  font-family:Arial Rounded MT Bold;
+  font-size:18px;
+  margin: 0px auto 0px auto;
+}
+.appBox #txtCity{
+    background: transparent;
+    border: none;
+    color:#4ddbff;
+    font-size:18px;
+    font-family:Arial Rounded MT Bold;
+}
+
+.searchButton #btnGetWeather{
+ 
+  background: transparent;
+  -webkit-border-radius: 25;
+  -moz-border-radius: 25;
+  border-radius: 25px;
+  text-shadow: 0px 1px 2px #666666;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 20px 5px 20px;
+  text-decoration: bold;
+}
+.coordinates {
+  margin: 5px auto 0px auto;
+}
+.loc {
+  color:#4ddbff;
+}
+.tempType {
+  color:#4ddbff;
+  border:none;
+  background:none;
+  padding:0px 0px 0px 1px;
+} 
+
+.tempType:hover {
+  color: #ff9933;
+}
+
+.footer {
+  color:#FFFFFF;
+  margin: 5px 0px 0px 0px;
+}
+.footer a {
+  color:#4ddbff;
+}

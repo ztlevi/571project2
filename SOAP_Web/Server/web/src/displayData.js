@@ -43,13 +43,13 @@ function retrieveData(){
 function display() {
     var resultElement= $('#resultDiv');
     resultElement.html(
-        'temp_f: '+obj.current.temp_f+'<br/>'+
-            'Last_updated: '+obj.current.last_updated+'<br/>'+
+            
+            'temperature(f): '+obj.current.temp_f+'<br/>'+
             'Temprature_feels_like: '+obj.current.feelslike_c+'<br/>'+
             'wind_degree: '+obj.current.wind_degree+'<br/>'+
             'wind_dir: '+obj.current.wind_dir+'<br/>'+
-            'wind_kph: '+obj.current.wind_kph+'<br/>'
-        
+            'wind_kph: '+obj.current.wind_kph+'<br/>'+
+            'Last_updated: '+obj.current.last_updated+'<br/>'
     );
 
     if (obj != null) {
