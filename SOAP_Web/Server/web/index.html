@@ -6,76 +6,35 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>CIS 571 Project2</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-            
-        <script>
-            
-         $(document).ready(function () {
-              $(btnGetWeather).click(function(){
-                  
-                  var resultElement= $('#resultDiv');
-                  var requestData=$('#txtCity').val();
-                  var webserUrl = "http://localhost:8080/Server/Weather_Service?WSDL";
-                  
-                  var soapRequest = '<?xml version="1.0" encoding="UTF-8"?>\
-                                     <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">\
-                                     <SOAP-ENV:Header/>\
-                                     <S:Body>\
-                                     <ns2:setLocation xmlns:ns2="http://soap.com/">\
-                                     <location>'+requestData+'</location>\
-                                     </ns2:setLocation>\
-                                     </S:Body>\
-                                     </S:Envelope>';
-                  $.ajax({
-                    type: "POST",
-                    url:webserUrl,
-                    contentType: "text/xml",
-                    dataType: "xml",
-                    data: soapRequest,
-                    success: function(data, status, req){
-                        console.log(data);
-                        var txt =data.getElementsByTagName("return")[0].firstChild.nodeValue;
-                        var obj=JSON.parse(txt);
-                        resultElement.html(
-                                'temp_f: '+obj.current.temp_f+'<br/>'+
-                                'Last_updated: '+obj.current.last_updated+'<br/>'+
-                                'Temprature_feels_like: '+obj.current.feelslike_c+'<br/>'+
-                                'wind_degree: '+obj.current.wind_degree+'<br/>'+
-                                'wind_dir: '+obj.current.wind_dir+'<br/>'+
-                                'wind_kph: '+obj.current.wind_kph+'<br/>'
-                                
-                               );
-                    },
-                    error: function(data, status, req){
-                        alert(req.responseText + " " + status);
-                    }
-                    });
-               }); 
-           });
-      
-        
-        </script>
+        <link rel="stylesheet" type="text/css" href="login.css">
     </head>
-    
     <body>
-        <table>
-            <tr>
-                <td>City</td>
-                <td><input type="text" id="txtCity" /></td>
-            </tr>
-<!--             <tr>
-                <td>Country</td>
-                <td><input type="text" id="txtCountry" /></td>
-            </tr>-->
-        </table>
-        <input type="button" id="btnGetWeather" value="Get Weather Data" />
-        <br/> <br/>
-        <div id="resultDiv">
-  
-        </div>
-        
+        <form >
+  <div class="imgcontainer">
+    <img src="dog.jpg" alt="Dog" class="dog" >
+  </div>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" id="username" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+    <button type="submit" id="Login" >Login</button>
+
+    <input type="checkbox" checked="checked"> Remember me
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn" id="CancelButton">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> 
+        <script src="./login.js"></script>
     </body>
 </html>
