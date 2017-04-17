@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Weather</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/showWeather.css">
+    </head>
+    <body>
+<div class="container title">
+  <div class="row">
+    <div class="text-center">
+      <h1 class="nameApp" style="width:50%;text-align:center">Local Weather App</h1>
+    </div>
+  </div>
+</div>
+<div class="container appBox">
+  <div class="text-center"> Where do you what to search:
+    <span class ="loc" id="city"><input type="text" id="txtCity" /></span>
+    <span class ="loc" id="region">  </span>
+    <span class ="loc" id="country">  </span>    
+  </div>
+    <div class="text-center searchButton">
+    <input type="button" id="btnGetWeather" value="Get" />
+    
+  </div>
+  <div class="text-center coordinates">
+    Lat: <span class ="loc" id="lat">...</span>
+    Long: <span class ="loc" id="long">...</span>
+  </div>
+  <div class="text-center temperature">
+    Temperature: <span class ="loc" id="temperature"></span><button class="tempType" id="units">&deg;F</button>
+  </div>
+    <div class="text-center icon">
+      <!--<span id="weather-icon"> -->
+        <canvas id="icon1" width="128" height="128"></canvas>
+      <!--</span>-->
+    </div>
+  <div class="text-center weather">
+    <span id="weather"></span>
+  </div> 
+</div>
+<!--<div class="footer text-center">
+  by <a href="http://elijahada.github.io/" target="_blank">Elijah A.</a>
+</div>-->
+ <script src="/src/showWeather.js"></script>
+    </body>
+</html>
